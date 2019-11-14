@@ -146,6 +146,11 @@ class Instructor extends Lambdasian {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`;
   }
+  // FOR STRETCH
+  updateGrade(student) {
+    //adjusts the student's grade by a random number between -grade & 100 - grade.
+    return student.grade += Math.round(Math.random() * (100 - student.grade) - student.grade);
+  }
 }
 
 /*
@@ -164,11 +169,12 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student extends Lambdasian{
-  constructor(attrs) {
+  constructor(attrs, grade) {
     super(attrs);
     this.previousBackground = attrs.previousBackground;
     this.className = attrs.className;
     this.favSubjects = attrs.favSubjects;
+    this.grade = grade; // FOR STRETCH
   }
   listSubjects() {
     return `loving ${this.favSubjects.join()}!`;
@@ -178,6 +184,10 @@ class Student extends Lambdasian{
   }
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+  //FOR STRETCH
+  graduate() {
+    return this.grade > 70 ? `${this.name} is ready to graduate!` : `${this.name}'s grade is ${this.grade} and is not ready to graduate yet.`; 
   }
 }
 
